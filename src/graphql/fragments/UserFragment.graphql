@@ -1,0 +1,6 @@
+# @format
+
+fragment UserFragment on User {
+  id
+  username
+}
