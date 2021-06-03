@@ -1,0 +1,7 @@
+# @format
+
+query Me {
+  me {
+    ...UserFragment
+  }
+}
