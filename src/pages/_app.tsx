@@ -5,9 +5,9 @@ import { cacheExchange, QueryInput, Cache } from "@urql/exchange-graphcache";
 import { createClient, dedupExchange, fetchExchange, Provider } from "urql";
 import {
   LoginMutation,
+  LogoutMutation,
   MeDocument,
   MeQuery,
-  Query,
   RegisterMutation,
 } from "../generated/graphql";
 import theme from "../theme";
@@ -31,6 +31,14 @@ const client = createClient({
     cacheExchange({
       updates: {
         Mutation: {
+          logout: (_result, args, cache, info) => {
+            newUpdateQuery<LogoutMutation, MeQuery>(
+              cache,
+              { query: MeDocument },
+              _result,
+              () => ({ me: null })
+            );
+          },
           login: (_result, args, cache, info) => {
             newUpdateQuery<LoginMutation, MeQuery>(
               cache,
