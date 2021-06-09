@@ -1,6 +1,6 @@
 # @format
 
-fragment RegualarError on FieldError {
+fragment RegularError on FieldError {
   field
   message
 }
