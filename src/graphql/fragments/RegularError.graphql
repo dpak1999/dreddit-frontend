@@ -1,0 +1,6 @@
+# @format
+
+fragment RegualarError on FieldError {
+  field
+  message
+}
